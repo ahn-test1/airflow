@@ -2,6 +2,7 @@ from airflow.models.dag import DAG
 import datetime
 from airflow.operators.python import PythonOperator
 import pendulum
+import random
 
 with DAG(
     dag_id="dags_pyhon_operator",
@@ -11,11 +12,11 @@ with DAG(
 ) as dag:
     def select_fruit():
         fruit = ['APPLE','BANANA','ORANGE',]
-        rand_int = rand.randint(0,3)
+        rand_int = random.randint(0,3)
         print(fruit[rand_int])
         
     py_t1 = PythonOperator(
-        task_id='py_t1'
+        task_id='py_t1',
         python_callable=select_fruit
     )
     
