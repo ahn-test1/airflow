@@ -8,7 +8,7 @@ with DAG(
     dag_id="dags_python_import_func",
     schedule="30 6 * * *",
     start_date=pendulum.datetime(2024, 3, 12, tz="Asia/Seoul"),
-    catchup=False
+    catchup=True
 ) as dag:
     
     task_get_sftp = PythonOperator(
